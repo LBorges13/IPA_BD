@@ -23,7 +23,7 @@ SELECT * FROM Aluno;
 --Curso
 DROP TABLE IF EXISTS Curso CASCADE;
 CREATE TABLE Curso (
-	Cod_curso int primary key unique,
+	Cod_curso SERIAL primary key unique,
 	Nome_curso VARCHAR(100) unique not null,
 	Carg_horaria VARCHAR(10) not null
 );
@@ -82,11 +82,11 @@ VALUES ('João da Silva', 'M', '527.261.588-38', 'Rua da Juta', 63, 'joap@gmail.
 SELECT * from Aluno;
 
 -- populando Curso
-INSERT INTO Curso (Cod_curso, Nome_curso, Carg_horaria) 
-VALUES (99,'Agentes do Brincar', '10 horas'),
-	(98,'Jovem Mediadores do brincar', '15 horas'),
-	(97,'Guardiões do brincar', '20 horas'),
-	(96,'Mediadores do brincar inclusivo','30 horas');
+INSERT INTO Curso (Nome_curso, Carg_horaria) 
+VALUES ('Agentes do Brincar', '170 horas'),
+	('Jovem Mediadores do brincar', '90 horas'),
+	('Guardiões do brincar', '50 horas'),
+	('Mediadores do brincar inclusivo','30 horas');
 SELECT * FROM Curso;
 
 
@@ -96,17 +96,17 @@ CREATE TABLE Matricula (
 	Id_alu serial not null,
 	Cod_curso smallint not null,
 	Num_matri serial primary key unique,
-	Id_moni smallint not null,
+	Id_monitor smallint not null,
 	Situ_matri char(7) not null check(Situ_matri IN ('ATIVA', 'INATIVA')),
 	Data_matri DATE not null,
 	
 	FOREIGN KEY (Id_alu) REFERENCES Aluno (Id_aluno) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Cod_curso) REFERENCES Curso (Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (Id_moni) REFERENCES Monitor (Id_moni) ON UPDATE CASCADE ON DELETE CASCADE);
+	FOREIGN KEY (Id_monitor) REFERENCES Monitor (Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE);
 
 --Populando matricula
 
-INSERT INTO matricula (Cod_curso, Id_moni, Situ_matri, Data_matri) VALUES 
+INSERT INTO matricula (Cod_curso, Id_monitor, Situ_matri, Data_matri) VALUES 
 (1, 2, 'ATIVA', '22-11-2022'),
 (1, 1, 'ATIVA', '22-11-2022'),
 (3, 1, 'ATIVA', '22-11-2022'),
@@ -139,7 +139,7 @@ SELECT * FROM Matricula;
 -- Oficina
 drop table if exists oficina cascade ;
 create table oficina (
-	id_ofic int primary key not null ,
+	id_ofic serial primary key not null ,
 	nome_ofic char(20) not null ,
 	data_ofic date not null,
 	carga_hor int not null ,
@@ -151,90 +151,63 @@ create table oficina (
 ) ;
 
 -- Populando Oficina
-INSERT INTO oficina (id_ofic, nome_ofic, data_ofic, carga_hor, descricao, hora_inicio, hora_termino, Cod_curso)
-VALUES (101,'Aula 1', '2023-06-01', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '09:00:00', '17:00:00',99),
-	(102, 'Aula 2', '2023-06-02', 4, 'Brincar para construção de uma cultura de paz: habilidades ', '10:00:00', '16:00:00',99),
-	(103, 'Aula 3', '2023-06-03', 4, 'Gerenciando riscos no brincar', '13:00:00', '17:00:00',98),
-	(104, 'Aula 4', '2023-06-04', 4, 'Brincadeiras para todas as faixas', '14:00:00', '19:00:00',97),
-	(105, 'Aula 5', '2023-06-05', 4, 'Inclusão de crianças com deficiência pelo brincar', '11:00:00', '18:00:00',98),
-	(106, 'Aula 6', '2023-06-06', 4, 'Brincar e o imaginário infantil: contação de histórias', '13:00:00', '17:00:00',97),
-	(107, 'Aula 7', '2023-06-07', 4, 'Brincar e dançar: a arte em movimento', '10:00:00', '13:00:00',96),
-	(108, 'Aula 8', '2023-06-08', 4, 'Brincar para construção de uma cultura de paz: habilidades ', '13:00:00', '19:00:00',99),
-	(109, 'Aula 9', '2023-06-09', 4, 'Gerenciando riscos no brincar', '10:00:00', '14:00:00',98),
-	(110, 'Aula 10', '2023-06-10', 4, 'Inclusão de crianças com deficiência pelo brincar', '09:00:00', '17:00:00',98),
-	(111, 'Aula 11', '2023-06-11', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '11:00:00', '16:00:00',96),
-	(112, 'Aula 12', '2023-06-12', 4,'Gerenciando riscos no brincar', '09:00:00', '17:00:00',97),
-	(113, 'Aula 13', '2023-06-13', 4,'Inclusão de crianças com deficiência pelo brincar', '10:00:00', '16:00:00',98),
-	(114, 'Aula 14', '2023-06-14', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '13:00:00', '17:00:00',96);
-	
-select * from oficina
-
+INSERT INTO oficina (nome_ofic, data_ofic, carga_hor, descricao, hora_inicio, hora_termino, Cod_curso)
+VALUES ('Aula 1', '2023-06-01', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '09:00:00', '17:00:00',1),
+	('Aula 2', '2023-06-02', 4, 'Brincar para construção de uma cultura de paz: habilidades ', '10:00:00', '16:00:00',1),
+	('Aula 3', '2023-06-03', 4, 'Gerenciando riscos no brincar', '13:00:00', '17:00:00',1),
+	('Aula 4', '2023-06-04', 4, 'Brincadeiras para todas as faixas', '14:00:00', '19:00:00',1),
+	('Aula 5', '2023-06-05', 4, 'Inclusão de crianças com deficiência pelo brincar', '11:00:00', '18:00:00',1),
+	('Aula 6', '2023-06-06', 4, 'Brincar e o imaginário infantil: contação de histórias', '13:00:00', '17:00:00',1),
+	('Aula 7', '2023-06-07', 4, 'Brincar e dançar: a arte em movimento', '10:00:00', '13:00:00',1),
+	('Aula 8', '2023-06-08', 4, 'Brincar para construção de uma cultura de paz: habilidades ', '13:00:00', '19:00:00',1),
+	('Aula 9', '2023-06-09', 4, 'Gerenciando riscos no brincar', '10:00:00', '14:00:00',1),
+	('Aula 10', '2023-06-10', 4, 'Inclusão de crianças com deficiência pelo brincar', '09:00:00', '17:00:00',1),
+	('Aula 11', '2023-06-11', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '11:00:00', '16:00:00',1),
+	('Aula 12', '2023-06-12', 4,'Gerenciando riscos no brincar', '09:00:00', '17:00:00',1),
+	('Aula 13', '2023-06-13', 4,'Inclusão de crianças com deficiência pelo brincar', '10:00:00', '16:00:00',1),
+	('Aula 14', '2023-06-14', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '13:00:00', '17:00:00',1);	
+select * from oficina;
 
 --atividades
-drop table if exists atividades cascade ;
-create table atividades (
+drop table if exists Atividade cascade ;
+create table Atividade (
 	Cod_curso int not null,
 	num_atv integer not null primary key,
 	Id_aluno int not null,
 	nome_atv varchar(20) not null,
 	entrega boolean not null,
 	nota_atv smallint not null,
-	Id_monitor int not null ,
+	Id_monitor smallint not null ,
 	
 	
-foreign key (Id_monitor) references monitor(Id_monitor)
-on delete cascade on update cascade ,
-foreign key (Id_aluno) references aluno(Id_aluno)
+foreign key (Id_monitor) references Monitor(Id_monitor)
 on delete cascade on update cascade	,
-foreign key (Cod_curso) references curso(Cod_curso)
+foreign key (Id_aluno) references Aluno(Id_aluno)
+on delete cascade on update cascade	,
+foreign key (Cod_curso) references Curso(Cod_curso)
 on delete cascade on update cascade ) ;
 
-select * from atividades
+select * from Atividade;
 
 -- populando atividades
 
-INSERT INTO atividades (Cod_curso, num_atv, Id_aluno, nome_atv, entrega, nota_atv, id_monitor)
+INSERT INTO Atividade (Cod_curso, num_atv, Id_aluno, nome_atv, entrega, nota_atv, Id_monitor)
 VALUES 
-    (99, 651, 1, 'Atividade 1', true, 80, 1),
-    (99, 652, 2, 'Atividade 2', true, 75, 2),
-    (99, 653, 3, 'Atividade 3', false, 0, 1),
-    (98, 654, 4, 'Atividade 1', true, 90, 2),
-    (98, 655, 5, 'Atividade 2', true, 85, 1),
-    (98, 656, 6, 'Atividade 3', true, 95, 2),
-    (97, 657, 7, 'Atividade 1', true, 70, 1),
-    (97, 658, 8, 'Atividade 2', false, 0, 2),
-    (97, 659, 9, 'Atividade 3', true, 88, 1),
-    (96, 660, 10, 'Atividade 1', true, 92, 2),
-    (96, 611, 11, 'Atividade 2', true, 87, 1),
-    (96, 612, 12, 'Atividade 3', true, 82, 2);
+    (1, 651, 1, 'Atividade 1', true, 80, 1),
+    (1, 652, 2, 'Atividade 2', true, 75, 2),
+    (2, 653, 3, 'Atividade 3', false, 0, 1),
+    (1, 654, 4, 'Atividade 1', true, 90, 2),
+    (2, 655, 5, 'Atividade 2', true, 85, 1),
+    (4, 656, 6, 'Atividade 3', true, 95, 2),
+    (3, 657, 7, 'Atividade 1', true, 70, 1),
+    (3, 658, 8, 'Atividade 2', false, 0, 2),
+    (3, 659, 9, 'Atividade 3', true, 88, 1),
+    (3, 660, 10, 'Atividade 1', true, 92, 2),
+    (2, 611, 11, 'Atividade 2', true, 87, 1),
+    (2, 612, 12, 'Atividade 3', true, 82, 2);
 
-select * from atividades
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select * from Atividade;
+select * from Aluno;
+select * from Monitor;
+select * from Curso;
+select * from Oficina;
