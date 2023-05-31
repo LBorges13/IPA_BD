@@ -376,10 +376,10 @@ Insert into Frequencia (Id_ofic, Id_alu, Id_monitor, Cod_Curso, Situac_presenca)
 (14, 24, 1, 1, 'False'),
 (14, 25, 1, 1, 'False');
 
-select * from Atividade;
-select * from Aluno;
-select * from Monitor;
-select * from Curso;
-select * from Oficina;
-select * from Matricula;
-select * from Frequencia;
+Select * FROM Frequencia;
+Select Count(*) FROM Frequencia;
+ --Selects de vizualização
+ --Nome e profissão dos aluno que faltaram;
+ Select b.Nome_alu AS Aluno, b.Profissao, b.Sexo_alu AS Sexo 
+ From Frequencia ss inner join Aluno b
+ on ss.Id_alu = b.Id_aluno AND ss.Situac_presenca = 'False';
