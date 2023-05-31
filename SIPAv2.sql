@@ -1,4 +1,6 @@
 SET DATESTYLE TO POSTGRES, DMY ;
+--O QUÊ FAZER
+--Arrumar dados de datas, popular mais dados, acrescentar selects contendo joins.
 
 --Aluno
 DROP TABLE IF EXISTS Aluno CASCADE;
@@ -209,5 +211,175 @@ VALUES
 select * from Atividade;
 select * from Aluno;
 select * from Monitor;
+select * from Matricula;
 select * from Curso;
 select * from Oficina;
+
+-- Tabela Frequência
+
+Drop table if exists Frequencia cascade;
+Create table Frequencia (
+	Id_ofic smallint not null,
+	Id_alu smallint not null,
+	Id_monitor smallint not null,
+	Cod_curso smallint not null,
+	Situac_presenca boolean,
+	FOREIGN KEY (Id_ofic) REFERENCES Oficina(Id_ofic) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Id_alu) REFERENCES Aluno(Id_aluno) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Id_monitor) REFERENCES Monitor(Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Cod_curso) REFERENCES Curso(Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE);
+	
+-- Populando tabela frequência
+select * from Oficina;
+select id_alu
+from Matricula
+WHERE Cod_curso = 1;
+Insert into Frequencia (Id_ofic, Id_alu, Id_monitor, Cod_Curso, Situac_presenca) values
+(1, 1, 1, 1, 'True'), 
+(1, 2, 2, 1, 'True'),
+(1, 6, 1, 1, 'True'),
+(1, 9, 2, 1, 'False'),
+(1, 16, 2, 1, 'True'),
+(1, 18, 1, 1, 'True'),
+(1, 19, 2, 1, 'True'),
+(1, 22, 2, 1, 'True'), 
+(1, 24, 1, 1, 'False'),
+(1, 25, 1, 1, 'True'),
+(2, 1, 1, 1, 'False'), 
+(2, 2, 1, 1, 'False'),
+(2, 6, 1, 1, 'True'),
+(2, 9, 2, 1, 'True'),
+(2, 16, 2, 1, 'True'),
+(2, 18, 1, 1, 'True'),
+(2, 19, 2, 1, 'True'), 
+(2, 22, 2, 1, 'True'), 
+(2, 24, 1, 1, 'False'),
+(2, 25, 1, 1, 'True'),
+(3, 1, 1, 1, 'True'), 
+(3, 2, 1, 1, 'True'),
+(3, 6, 1, 1, 'True'),
+(3, 9, 1, 1, 'True'),
+(3, 16, 2, 1, 'True'),
+(3, 18, 1, 1, 'True'),
+(3, 19, 1, 1, 'True'),
+(3, 22, 1, 1, 'True'), 
+(3, 24, 1, 1, 'False'),
+(3, 25, 2, 1, 'True'),
+(4, 1, 1, 1, 'True'), 
+(4, 2, 1, 1, 'True'),
+(4, 6, 1, 1, 'True'),
+(4, 9, 2, 1, 'False'),
+(4, 16, 2, 1, 'False'),
+(4, 18, 2, 1, 'True'),
+(4, 19, 2, 1, 'False'), 
+(4, 22, 2, 1, 'True'), 
+(4, 24, 1, 1, 'False'),
+(4, 25, 2, 1, 'True'),
+(5, 1, 1, 1, 'True'), 
+(5, 2, 2, 1, 'False'),
+(5, 6, 1, 1, 'True'),
+(5, 9, 2, 1, 'False'),
+(5, 16, 2, 1, 'False'),
+(5, 18, 1, 1, 'True'),
+(5, 19, 2, 1, 'False'), 
+(5, 22, 1, 1, 'True'),
+(5, 24, 1, 1, 'False'),
+(5, 25, 1, 1, 'True'),
+(6, 1, 1, 1, 'True'), 
+(6, 2, 1, 1, 'True'),
+(6, 6, 1, 1, 'True'),
+(6, 9, 2, 1, 'True'),
+(6, 16, 2, 1, 'True'),
+(6, 18, 1, 1, 'True'),
+(6, 19, 1, 1, 'True'), 
+(6, 22, 1, 1, 'True'), 
+(6, 24, 1, 1, 'True'),
+(6, 25, 1, 1, 'True'),
+(7, 1, 1, 1, 'False'), 
+(7, 2, 1, 1, 'True'),
+(7, 6, 1, 1, 'False'),
+(7, 9, 2, 1, 'True'),
+(7, 16, 2, 1, 'True'),
+(7, 18, 1, 1, 'False'),
+(7, 19, 2, 1, 'True'),
+(7, 22, 1, 1, 'True'), 
+(7, 24, 1, 1, 'True'),
+(7, 25, 1, 1, 'False'),
+(8, 1, 1, 1, 'True'), 
+(8, 2, 1, 1, 'True'),
+(8, 6, 1, 1, 'True'),
+(8, 9, 2, 1, 'True'),
+(8, 16, 2, 1, 'True'),
+(8, 18, 1, 1, 'True'),
+(8, 19, 2, 1, 'True'), 
+(8, 22, 2, 1, 'True'), 
+(8, 24, 1, 1, 'False'),
+(8, 25, 1, 1, 'True'),
+(9, 1, 1, 1, 'False'), 
+(9, 2, 1, 1, 'True'),
+(9, 6, 1, 1, 'True'),
+(9, 9, 2, 1, 'False'),
+(9, 16, 2, 1, 'True'),
+(9, 18, 1, 1, 'True'),
+(9, 19, 2, 1, 'True'),
+(9, 22, 2, 1, 'True'),
+(9, 24, 1, 1, 'False'),
+(9, 25, 1, 1, 'True'),
+(10, 1, 1, 1, 'True'), 
+(10, 2, 1, 1, 'True'),
+(10, 6, 1, 1, 'True'),
+(10, 9, 2, 1, 'True'),
+(10, 16, 1, 1, 'True'),
+(10, 18, 1, 1, 'True'),
+(10, 19, 1, 1, 'True'), 
+(10, 22, 1, 1, 'True'), 
+(10, 24, 1, 1, 'True'),
+(10, 25, 2, 1, 'True'),
+(11, 1, 1, 1, 'True'), 
+(11, 2, 1, 1, 'True'),
+(11, 6, 1, 1, 'True'),
+(11, 9, 2, 1, 'False'),
+(11, 16, 2, 1, 'True'),
+(11, 18, 1, 1, 'False'),
+(11, 19, 2, 1, 'True'),
+(11, 22, 2, 1, 'True'), 
+(11, 24, 1, 1, 'True'),
+(11, 25, 1, 1, 'True'),
+(12, 1, 1, 1, 'True'), 
+(12, 2, 1, 1, 'True'),
+(12, 6, 1, 1, 'True'),
+(12, 9, 2, 1, 'True'),
+(12, 16, 2, 1, 'True'),
+(12, 18, 1, 1, 'True'),
+(12, 19, 2, 1, 'True'), 
+(12, 22, 2, 1, 'True'), 
+(12, 24, 1, 1, 'False'),
+(12, 25, 1, 1, 'True'),
+(13, 1, 1, 1, 'True'), 
+(13, 2, 1, 1, 'True'),
+(13, 6, 1, 1, 'True'),
+(13, 9, 2, 1, 'True'),
+(13, 16, 2, 1, 'False'),
+(13, 18, 1, 1, 'True'),
+(13, 19, 2, 1, 'True'), 
+(13, 22, 2, 1, 'False'), 
+(13, 24, 1, 1, 'False'),
+(13, 25, 1, 1, 'False'),
+(14, 1, 1, 1, 'True'), 
+(14, 2, 1, 1, 'True'),
+(14, 6, 1, 1, 'True'),
+(14, 9, 2, 1, 'True'),
+(14, 16, 1, 1, 'False'),
+(14, 18, 1, 1, 'True'),
+(14, 19, 1, 1, 'True'), 
+(14, 22, 1, 1, 'True'), 
+(14, 24, 1, 1, 'False'),
+(14, 25, 1, 1, 'False');
+
+select * from Atividade;
+select * from Aluno;
+select * from Monitor;
+select * from Curso;
+select * from Oficina;
+select * from Matricula;
+select * from Frequencia;
