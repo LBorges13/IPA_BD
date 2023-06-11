@@ -7,18 +7,18 @@ DROP TABLE IF EXISTS Aluno CASCADE;
 CREATE TABLE IF NOT EXISTS Aluno (
             Id_aluno SERIAL PRIMARY KEY UNIQUE NOT NULL,
             Nome_alu VARCHAR(75) not null,
-	        GENERO CHAR(1) not null CHECK (GENERO IN ('M', 'F')),
-	        CPF_alu CHAR(16) unique not null,
-	        Nome_rua VARCHAR(100) not null,
-	        Num_end SMALLINT not null,
-	        Email_alu VARCHAR(50) unique not null,
-	        CEP_alu CHAR(11) not null,
-	        UF CHAR(4) not null,
-	        Num_cel BIGINT not null,
-	        Data_nasc DATE not null,
-	        Profissao VARCHAR(30),
-	        Bairro VARCHAR(50),
-	        Cidade VARCHAR(15)
+	    GENERO CHAR(1) not null CHECK (GENERO IN ('M', 'F')),
+	    CPF_alu CHAR(16) unique not null,
+	    Nome_rua VARCHAR(100) not null,
+	    Num_end SMALLINT not null,
+	    Email_alu VARCHAR(50) unique not null,
+	    CEP_alu CHAR(11) not null,
+	    UF CHAR(4) not null,
+	    Num_cel BIGINT not null,
+	    Data_nasc DATE not null,
+	    Profissao VARCHAR(30),
+	    Bairro VARCHAR(50),
+	    Cidade VARCHAR(15)
 );
 SELECT * FROM Aluno;
 
@@ -27,7 +27,8 @@ SELECT * FROM Aluno;
 -- Populando Aluno
 
 INSERT INTO Aluno (Nome_alu, GENERO, CPF_alu, Nome_rua, Num_end, Email_alu, CEP_alu, UF, Num_cel, Data_nasc, Profissao, Bairro, Cidade)
-VALUES ('João da Silva', 'M', '527.261.588-38', 'Rua da Juta', 63, 'joap@gmail.com', '03010-010', 'SP', 987654321, '1990-01-01', 'Comerciante', 'Brás', 'São Paulo'),
+VALUES 
+('João da Silva', 'M', '527.261.588-38', 'Rua da Juta', 63, 'joap@gmail.com', '03010-010', 'SP', 987654321, '1990-01-01', 'Comerciante', 'Brás', 'São Paulo'),
 ('Pedro Gomes', 'M', '798.177.650-32', 'Avenida Graciela Flores de Piteri', 580, 'pedro@hotmail.com', '06236-215', 'SP', 987654221, '1991-12-05', 'Diretor', 'Aliança', 'Osasco'),
 ('João da Silva', 'M', '241.964.916-85', 'Praça Bacharel Fernando Braga Pereira da Rocha', 43, 'joao@gmail.com', '04417-090', 'SP', 910654321, '1990-01-01', 'Psicólogo', 'Jardim Miriam', 'São Paulo'),
 ('Maria Souza', 'F', '686.917.583-76', 'Estrada da Lama Preta', 321, 'maria@gmail.com', '23577-900', 'RJ', 123456789, '1995-05-15', 'Diretora', 'Santa Cruz', 'Rio de Janeiro'),
@@ -127,7 +128,8 @@ SELECT * FROM Curso;
 ------------------
 -- populando Curso
 INSERT INTO Curso (Cod_curso, Nome_curso, Carg_horaria) 
-VALUES ('AB','Agentes do Brincar', '170 horas'),
+VALUES 
+	('AB','Agentes do Brincar', '170 horas'),
 	('JMB','Jovem Mediadores do brincar', '90 horas'),
 	('GB', 'Guardiões do brincar', '50 horas'),
 	('MB','Mediadores do brincar inclusivo','30 horas');
@@ -155,9 +157,9 @@ SELECT * FROM turma;
 INSERT INTO turma (Cod_curso, Num_turma, Id_monitor) 
 VALUES ('AB', 'AB-T01', 1),
        ('AB', 'AB-T02', 2),
-	   ('JMB', 'JMB-T01', 1),
+       ('JMB', 'JMB-T01', 1),
        ('JMB', 'JMB-T02', 2),
-	   ('GB', 'GB-T01', 1),
+       ('GB', 'GB-T01', 1),
        ('GB', 'GB-T04', 2),
        ('MB', 'MB-T01', 1),
        ('MB', 'MB-T04', 2);					
@@ -180,7 +182,7 @@ select * from oficina;
 --------------------
 -- Populando Oficina
 INSERT INTO oficina (nome_ofic, descricao)
-VALUES ('Aula 1','Principios dos Agentes do Brincar: como proporcionar o brincar'),
+VALUES  ('Aula 1','Principios dos Agentes do Brincar: como proporcionar o brincar'),
 	('Aula 2','Brincar para construção de uma cultura de paz: habilidades '),
 	('Aula 3','Gerenciando riscos no brincar'),
 	('Aula 4','Brincadeiras para todas as faixas'),
@@ -216,7 +218,7 @@ select * from oficinas_curso;
 -- Populando Oficinas_curso                  ARRUMARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR ##############################
 
 INSERT INTO oficinas_curso (cod_curso, id_ofic, Num_turma, hora_inicio, hora_termino, data_ofic)
-VALUES ('AB', 1,  'AB-T01', '09:00:00', '17:00:00','2023-06-01'),
+VALUES  ('AB', 1,  'AB-T01', '09:00:00', '17:00:00','2023-06-01'),
 	('AB', 2,  'AB-T01', '10:00:00', '16:00:00','2023-06-02'),
 	('JMB', 3, 'JMB-T01', '13:00:00', '17:00:00','2023-06-03'),
 	('JMB', 4, 'JMB-T01', '14:00:00', '19:00:00','2023-06-04'),
@@ -325,7 +327,7 @@ VALUES
     ('AB', 111, 9, 'AB-T01', True, 58, 2),
     ('AB', 111, 10, 'AB-T01', True, 98, 2),
     ('AB', 111, 11, 'AB-T01', false, 0, 2),
-	('AB', 111, 12, 'AB-T01', True, 96, 2),
+    ('AB', 111, 12, 'AB-T01', True, 96, 2),
     ('AB', 111, 13, 'AB-T01', True, 79, 2);
 	
 select * from atividade_feita;
