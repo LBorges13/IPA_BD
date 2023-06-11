@@ -1,6 +1,6 @@
 SET DATESTYLE TO POSTGRES, DMY ;
 --O QUÊ FAZER
---Arrumar dados de datas, popular mais dados, acrescentar selects contendo joins.
+--Arrumar dados de datas, popular mais dados, acrescentar selects contendo joins.            ATUALIZADO COM O DER, FALTA AJUSTA ULTIMA TAB
 
 --ALUNO
 DROP TABLE IF EXISTS Aluno CASCADE;
@@ -67,42 +67,47 @@ CREATE TABLE Matricula (
 	Id_monitor smallint not null,
 	Situ_matri char(7) not null check(Situ_matri IN ('ATIVA', 'INATIVA')),
 	Data_matri DATE not null,
+	Num_turma CHAR(7)  not null,
 	
+	FOREIGN KEY (Num_turma) REFERENCES turma (Num_turma) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Id_alu) REFERENCES Aluno (Id_aluno) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Cod_curso) REFERENCES Curso (Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Id_monitor) REFERENCES Monitor (Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE);
+	
+SELECT * FROM Matricula;
+
 
 ---------------------
 --Populando matricula
 
-INSERT INTO matricula (Cod_curso, Id_monitor, Situ_matri, Data_matri) 
+INSERT INTO matricula (Cod_curso, Id_monitor, Situ_matri, Data_matri, Num_turma)
 VALUES 
-	('AB', 2, 'ATIVA', '22-11-2022'),
-	('AB', 1, 'ATIVA', '22-11-2022'),
-	('GB', 1, 'ATIVA', '22-11-2022'),
-	('JMB', 1, 'ATIVA', '22-11-2022'),
-	('GB', 1, 'ATIVA', '22-11-2022'),
-	('AB', 2, 'ATIVA', '22-11-2022'),
-	('JMB', 2, 'INATIVA', '22-11-2022'),
-	('JMB', 2, 'ATIVA', '22-11-2022'),
-	('AB', 1, 'ATIVA', '22-11-2022'),
-	('GB', 2, 'ATIVA', '22-11-2022'),
-	('MB', 1, 'ATIVA', '22-11-2022'),
-	('JMB', 1, 'ATIVA', '22-11-2022'),
-	('GB', 1, 'ATIVA', '22-11-2022'),
-	('MB', 1, 'ATIVA', '22-11-2022'),
-	('GB', 2, 'ATIVA', '22-11-2022'),
-	('AB', 1, 'ATIVA', '22-11-2022'),
-	('GB', 1, 'INATIVA', '22-11-2022'),
-	('AB', 2, 'ATIVA', '22-11-2022'),
-	('AB', 1, 'ATIVA', '22-11-2022'),
-	('GB', 1, 'ATIVA', '22-11-2022'),
-	('JMB', 2, 'ATIVA', '22-11-2022'),
-	('AB', 1, 'ATIVA', '22-11-2022'),
-	('MB', 2, 'ATIVA', '22-11-2022'),
-	('AB', 1, 'ATIVA', '22-11-2022'),
-	('AB', 2, 'INATIVA', '22-11-2022'),
-	('MB', 2, 'INATIVA', '22-11-2022')
+	('AB', 2, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 2, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 2, 'INATIVA', '22-11-2022','AB-T01'),
+	('AB', 2, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 2, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('AB', 1, 'ATIVA', '22-11-2022','AB-T01'),
+	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 2, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 1, 'INATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 2, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 2, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 2, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 2, 'INATIVA', '22-11-2022', 'JMB-T01'),
+	('JMB', 2, 'INATIVA', '22-11-2022', 'JMB-T01')
 ;
 
 SELECT * FROM Matricula;
@@ -131,44 +136,101 @@ SELECT * FROM Curso;
 --                                                                                                                                                                                                                   - CURSO
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- OFICINA
+--TURMA
+
+DROP TABLE IF EXISTS turma CASCADE;
+CREATE TABLE turma (
+	Cod_curso CHAR (5),
+	Num_turma CHAR(7) unique not null,
+	Id_monitor smallint not null,
+	FOREIGN KEY (Cod_curso) REFERENCES Curso (Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Id_monitor) REFERENCES Monitor (Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+SELECT * FROM turma;
+
+------------------
+
+-- populando turma        
+INSERT INTO turma (Cod_curso, Num_turma, Id_monitor) 
+VALUES ('AB', 'AB-T01', 1),
+       ('AB', 'AB-T02', 2),
+	   ('JMB', 'JMB-T01', 1),
+       ('JMB', 'JMB-T02', 2),
+	   ('GB', 'GB-T01', 1),
+       ('GB', 'GB-T04', 2),
+       ('MB', 'MB-T01', 1),
+       ('MB', 'MB-T04', 2);					
+
+SELECT * FROM turma;
+
+--                                                                                                                                                                                                                   - CURSO
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-- OFICINA                                                             MUDAR ATRIBUTOS
 
 DROP TABLE IF EXISTS oficina CASCADE;
 create table oficina (
 	id_ofic serial primary key not null ,
 	nome_ofic char(20) not null ,
-	data_ofic date not null,
-	carga_hor int not null ,
-	descricao varchar(80) not null,
-	hora_inicio time not null,
-	hora_termino time not null,
-	Cod_curso CHAR (5) not null,
-	FOREIGN KEY (Cod_curso) REFERENCES Curso (Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE	
+	descricao varchar(80) not null
 ) ;
 select * from oficina;
 
 --------------------
 -- Populando Oficina
-INSERT INTO oficina (nome_ofic, data_ofic, carga_hor, descricao, hora_inicio, hora_termino, Cod_curso)
-VALUES ('Aula 1', '2023-06-01', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '09:00:00', '17:00:00','AB'),
-	('Aula 2', '2023-06-02', 4, 'Brincar para construção de uma cultura de paz: habilidades ', '10:00:00', '16:00:00','AB'),
-	('Aula 3', '2023-06-03', 4, 'Gerenciando riscos no brincar', '13:00:00', '17:00:00','AB'),
-	('Aula 4', '2023-06-04', 4, 'Brincadeiras para todas as faixas', '14:00:00', '19:00:00','AB'),
-	('Aula 5', '2023-06-05', 4, 'Inclusão de crianças com deficiência pelo brincar', '11:00:00', '18:00:00','AB'),
-	('Aula 6', '2023-06-06', 4, 'Brincar e o imaginário infantil: contação de histórias', '13:00:00', '17:00:00','AB'),
-	('Aula 7', '2023-06-07', 4, 'Brincar e dançar: a arte em movimento', '10:00:00', '13:00:00','AB'),
-	('Aula 8', '2023-06-08', 4, 'Brincar para construção de uma cultura de paz: habilidades ', '13:00:00', '19:00:00','AB'),
-	('Aula 9', '2023-06-09', 4, 'Gerenciando riscos no brincar', '10:00:00', '14:00:00','AB'),
-	('Aula 10', '2023-06-10', 4, 'Inclusão de crianças com deficiência pelo brincar', '09:00:00', '17:00:00','AB'),
-	('Aula 11', '2023-06-11', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '11:00:00', '16:00:00','AB'),
-	('Aula 12', '2023-06-12', 4,'Gerenciando riscos no brincar', '09:00:00', '17:00:00','AB'),
-	('Aula 13', '2023-06-13', 4,'Inclusão de crianças com deficiência pelo brincar', '10:00:00', '16:00:00','AB'),
-	('Aula 14', '2023-06-14', 4, 'Principios dos Agentes do Brincar: como proporcionar o brincar', '13:00:00', '17:00:00','AB');	
+INSERT INTO oficina (nome_ofic, descricao)
+VALUES ('Aula 1','Principios dos Agentes do Brincar: como proporcionar o brincar'),
+	('Aula 2','Brincar para construção de uma cultura de paz: habilidades '),
+	('Aula 3','Gerenciando riscos no brincar'),
+	('Aula 4','Brincadeiras para todas as faixas'),
+	('Aula 5','Inclusão de crianças com deficiência pelo brincar'),
+	('Aula 6','Brincar e o imaginário infantil: contação de histórias'),
+	('Aula 7','Brincar e dançar: a arte em movimento');	
 select * from oficina;
 
 --                                                                                                                                                                                                                   - OFICINA
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+--OFICINAS_CURSO                     														MUDAR POPULAÇÃO
+
+DROP TABLE IF EXISTS oficinas_curso CASCADE;
+create table oficinas_curso (
+	cod_curso CHAR (5) not null,
+	id_ofic serial not null ,
+	Num_turma CHAR(7) not null,
+	hora_inicio time not null,
+	hora_termino time not null,
+	data_ofic date not null,
+	FOREIGN KEY (Cod_curso) REFERENCES Curso (Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (id_ofic) REFERENCES oficina (id_ofic) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Num_turma) REFERENCES turma (Num_turma) ON UPDATE CASCADE ON DELETE CASCADE
+);
+select * from oficinas_curso;
+
+
+
+--------------------
+
+-- Populando Oficinas_curso                  ARRUMARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR ##############################
+
+INSERT INTO oficinas_curso (cod_curso, id_ofic, Num_turma, hora_inicio, hora_termino, data_ofic)
+VALUES ('AB', 1,  'AB-T01', '09:00:00', '17:00:00','2023-06-01'),
+	('AB', 2,  'AB-T01', '10:00:00', '16:00:00','2023-06-02'),
+	('JMB', 3, 'JMB-T01', '13:00:00', '17:00:00','2023-06-03'),
+	('JMB', 4, 'JMB-T01', '14:00:00', '19:00:00','2023-06-04'),
+	('GB', 5, 'GB-T01', '11:00:00', '18:00:00','2023-06-05'),
+	('GB', 6, 'GB-T01', '13:00:00', '17:00:00','2023-06-06'),
+	('MB', 1, 'MB-T01', '10:00:00', '13:00:00','2023-06-07'),
+	('MB', 7, 'MB-T01', '13:00:00', '19:00:00','2023-06-08')
+;	
+select * from oficinas_curso;
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --MONITOR
 DROP TABLE IF EXISTS Monitor CASCADE;
@@ -194,55 +256,82 @@ SELECT * from Monitor;
 --                                                                                                                                                                                                                   - MONITOR
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---ATIVIDADES
-drop table if exists Atividade cascade;
-create table Atividade (
+--ATIVIDADE
+drop table if exists atividade cascade;
+create table atividade (
 	Cod_curso CHAR (5) not null,
 	num_atv integer not null primary key,
-	Id_aluno int not null,
-	nome_atv varchar(20) not null,
+	nome_atv varchar(20) not null,	
+	
+foreign key (Cod_curso) references Curso(Cod_curso) on delete cascade on update cascade ) ;
+
+select * from atividade;
+
+------------------------
+-- populando atividade
+
+INSERT INTO atividade (Cod_curso, num_atv, nome_atv)
+VALUES 
+    ('AB', 111, 'Atividade AB 1'),
+    ('AB', 112, 'Atividade AB 2'),
+    ('AB', 113, 'Atividade AB 3'),
+    ('GB', 211, 'Atividade GB 1'),
+    ('GB', 212, 'Atividade GB 2'),
+    ('GB', 213, 'Atividade GB 3'),
+    ('MB', 311, 'Atividade MB 1'),
+    ('MB', 312, 'Atividade MB 2'),
+    ('MB', 313, 'Atividade MB 3'),
+    ('JMB', 411, 'Atividade JMB 1'),
+    ('JMB', 412, 'Atividade JMB 2'),
+    ('JMB', 413, 'Atividade JMB 3');
+	
+select * from atividade;
+
+--                                                                                                                                                                                                                   - ATIVIDADES
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+--ATIVIDADE_FEITA
+drop table if exists atividade_feita cascade;
+create table atividade_feita (
+	Cod_curso CHAR (5) not null,
+	num_atv integer not null,
+	Id_alu serial not null,
+	Num_turma CHAR(7) not null,
 	entrega boolean not null,
 	nota_atv smallint not null,
 	Id_monitor smallint not null ,
 	
 	
-foreign key (Id_monitor) references Monitor(Id_monitor)
-on delete cascade on update cascade	,
-foreign key (Id_aluno) references Aluno(Id_aluno)
-on delete cascade on update cascade	,
-foreign key (Cod_curso) references Curso(Cod_curso)
-on delete cascade on update cascade ) ;
+foreign key (Id_monitor) references Monitor(Id_monitor) on delete cascade on update cascade	,		
+FOREIGN KEY (Id_alu) REFERENCES Aluno (Id_aluno) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (Num_turma) REFERENCES turma (Num_turma) ON UPDATE CASCADE ON DELETE CASCADE) ;
 
-select * from Atividade;
+select * from atividade_feita;
 
 ------------------------
--- populando atividades
+-- populando atividade_feita
 
-INSERT INTO Atividade (Cod_curso, num_atv, Id_aluno, nome_atv, entrega, nota_atv, Id_monitor)
+INSERT INTO atividade_feita (Cod_curso, num_atv, Id_alu, Num_turma, entrega, nota_atv, Id_monitor)
 VALUES 
-    ('AB', 651, 1, 'Atividade 1', true, 80, 1),
-    ('AB', 652, 2, 'Atividade 2', true, 75, 2),
-    ('JMB', 653, 3, 'Atividade 3', false, 0, 1),
-    ('AB', 654, 4, 'Atividade 1', true, 90, 2),
-    ('JMB', 655, 5, 'Atividade 2', true, 85, 1),
-    ('MB', 656, 6, 'Atividade 3', true, 95, 2),
-    ('GB', 657, 7, 'Atividade 1', true, 70, 1),
-    ('GB', 658, 8, 'Atividade 2', false, 0, 2),
-    ('GB', 659, 9, 'Atividade 3', true, 88, 1),
-    ('GB', 660, 10, 'Atividade 1', true, 92, 2),
-    ('JMB', 611, 11, 'Atividade 2', true, 87, 1),
-    ('JMB', 612, 12, 'Atividade 3', true, 82, 2);
-
-select * from Atividade;
-select * from Aluno;
-select * from Monitor;
-select * from Matricula;
-select * from Curso;
-select * from Oficina;
+    ('AB', 111, 1, 'AB-T01', True, 100, 2),
+    ('AB', 111, 2, 'AB-T01', True, 90, 2),
+    ('AB', 111, 3, 'AB-T01', True, 82, 2),
+    ('AB', 111, 4, 'AB-T01', True, 40, 2),
+    ('AB', 111, 5, 'AB-T01', false, 0, 2),
+    ('AB', 111, 6, 'AB-T01', True, 55, 2),
+    ('AB', 111, 7, 'AB-T01', True, 92, 2),
+    ('AB', 111, 8, 'AB-T01', false, 0, 2),
+    ('AB', 111, 9, 'AB-T01', True, 58, 2),
+    ('AB', 111, 10, 'AB-T01', True, 98, 2),
+    ('AB', 111, 11, 'AB-T01', false, 0, 2),
+	('AB', 111, 12, 'AB-T01', True, 96, 2),
+    ('AB', 111, 13, 'AB-T01', True, 79, 2);
+	
+select * from atividade_feita;
 
 --                                                                                                                                                                                                                   - ATIVIDADES
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Tabela Frequência
 
 Drop table if exists Frequencia cascade;
