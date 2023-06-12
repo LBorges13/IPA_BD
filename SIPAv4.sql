@@ -1,6 +1,6 @@
 SET DATESTYLE TO POSTGRES, DMY ;
 --O QUÊ FAZER
---Arrumar dados de datas, popular mais alunos, popular mais turmas, acrescentar selects contendo joins.
+--Arrumar dados de datas, popular mais alunos, popular mais turmas, acrescentar selects contendo joins.;;
 
 --ALUNO
 DROP TABLE IF EXISTS Aluno CASCADE;
