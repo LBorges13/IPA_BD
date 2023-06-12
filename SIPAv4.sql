@@ -28,32 +28,32 @@ SELECT * FROM Aluno;
 
 INSERT INTO Aluno (Nome_alu, GENERO, CPF_alu, Nome_rua, Num_end, Email_alu, CEP_alu, UF, Num_cel, Data_nasc, Profissao, Bairro, Cidade)
 VALUES 
-('João da Silva', 'M', '527.261.588-38', 'Rua da Juta', 63, 'joap@gmail.com', '03010-010', 'SP', 987654321, '1990-01-01', 'Comerciante', 'Brás', 'São Paulo'),
-('Pedro Gomes', 'M', '798.177.650-32', 'Avenida Graciela Flores de Piteri', 580, 'pedro@hotmail.com', '06236-215', 'SP', 987654221, '1991-12-05', 'Diretor', 'Aliança', 'Osasco'),
-('João da Silva', 'M', '241.964.916-85', 'Praça Bacharel Fernando Braga Pereira da Rocha', 43, 'joao@gmail.com', '04417-090', 'SP', 910654321, '1990-01-01', 'Psicólogo', 'Jardim Miriam', 'São Paulo'),
-('Maria Souza', 'F', '686.917.583-76', 'Estrada da Lama Preta', 321, 'maria@gmail.com', '23577-900', 'RJ', 123456789, '1995-05-15', 'Diretora', 'Santa Cruz', 'Rio de Janeiro'),
-('Carlos Oliveira', 'M', '813.749.762-53', 'Beco da Amizade', 21, 'carlos@gmail.com', '31985-332', 'MG', 987154321, '1988-12-10', 'Pedagogo', 'Dom Silvério', 'Belo Horizonte'),
-('Ana Costa', 'F', '916.257.287-35', 'Rua Tapajós', 40, 'ana@hotmail.com', '87209-074', 'PR', 654321987, '1992-07-25', 'Psicóloga', 'Zona 03', 'Cianorte'),
-('Paulo Santos', 'M', '676.433.639-35', 'Rua Doutor Deoclécio Pereira', 7, 'paulo@outlook.com', '91040-470', 'RS', 321987654, '1998-03-18', 'Psicólogo', 'Jardim Floresta', 'Porto Alegre'),
-('Laura Mendes', 'F', '673.668.533-80', 'Rua Brasil Toschi', 2912, 'laura@gmail.com', '18706-490', 'SP', 987654321, '1993-09-20', 'Diretora', 'Alto da Colina II', 'Avaré'),
-('Ricardo Lima', 'M', '287.081.411-93', 'Largo Cambuci', 742, 'ricardinho@hotmail.com', '01523-010', 'SP', 123456789, '1987-06-12', 'Pedagogo', 'Cambuci', 'São Paulo'),
-('Fernanda Oliveira', 'F', '691.425.633-05', 'Rua Síria', 89, 'fernanda@outlook.com', '30150-020', 'MG', 987690321, '1991-04-05', 'Professora', 'Floresta', 'Belo Horizonte'),
-('Lucas Santos', 'M', '259.719.411-60', 'Rua Rodolpho Senff Júnior', 12, 'lucas@gmail.com', '81110-130', 'PR', 654321987, '1997-02-28', 'Psicólogo', 'Capão Raso', 'Curitiba'),
-('Juliana Silva', 'F', '386.218.721-70', 'Praça Província de São Pedro', 193, 'juliana@gmail.com', '91260-105', 'RS', 321987654, '1994-11-15', 'Psicóloga', 'Protásio Alves', 'Porto Alegre'),
-('Carolina Fernandes', 'F', '667.762.344-00', 'Rua Felipe Camarão', 969, 'carolina@yahoo.com', '27521-330', 'RJ', 123456789, '1992-07-25', 'Psicóloga', 'Liberdade', 'Resende'),
-('Gabriel Almeida', 'M', '835.497.616-51', 'Rua Tupaciguara', 18, 'gabriel@hotmail.com', '30330-310', 'MG', 987654021, '1996-05-03', 'Advogado', 'São Pedro', 'Belo Horizonte'),
-('Camila Rodrigues', 'F', '862.238.218-40', 'Rua Júlio Pasa', 923, 'camila@gmail.com', '81570-510', 'PR', 654321987, '1993-03-22', NULL, 'Uberaba', 'Curitiba'),
-('Marcelo Pereira', 'M', '164.433.466-61', 'Beco Nove', 150, 'marcelo@gmail.com', '90843-410', 'RS', 321987654, '1998-01-12', NULL, 'Nonoai', 'Porto Alegre'),
-('Isabela Costa', 'F', '248.282.389-72', 'Rua Conde Deu', 523, 'isabela@outlook.com', '04741-901', 'SP', 987654321, '1991-09-08', 'Professora', 'Santo Amaro', 'São Paulo'),
-('Rafaela Santos', 'F', '580.248.211-76', 'Avenida Murtas', 51, 'rafaela@gmail.com', '24913-465', 'RJ', 123456789, '1995-06-18', NULL, 'Itapeba', 'Maricá'),
-('Gustavo Oliveira', 'M', '166.642.218-53', 'Rua Luzia Maia de Azevedo', 77, 'gustavo@gmail.com', '04877-160', 'SP', 987654321, '1990-03-30', 'Professor', 'Cidade Luz', 'São Paulo'),
-('Carla Silva', 'F', '562.321.774-52', 'Rua Coronel João Cândido Muricy', 190, 'carla@gmail.com', '82130-040', 'PR', 654321987, '1994-02-12', 'Professora', 'Abranches', 'Curitiba'),
-('Vitor Rodrigues', 'M', '227.759.488-12', 'Avenida Moreira Guimarães', 4, 'vitor@gmail.com', '04074-030', 'SP', 321987654, '1999-11-25', 'Professor', 'Indianópolis', 'São Paulo'),
-('Leticia Santos', 'F', '179.889.502-15', 'Avenida José Pinheiro Borges', 2120, 'leticia@gmail.com', '08420-092', 'SP', 987610321, '1992-08-15', NULL, 'Jardim Helena', 'São Paulo'),
-('Rodrigo Lima', 'M', '610.578.372-88', 'Rua Clarindo Bispo de Oliveira', 84, 'rodrigo@gmail.com', '30666-110', 'MG', 987254321, '1996-05-03', 'Advogado', 'Conjunto Habitacional Vale do Jatobá (Barreiro)', 'Belo Horizonte'),
-('Mariana Fernandes', 'F', '822.116.735-54', 'Rua Anfilófio de Carvalho', 92, 'mariana@hotmail.com', '20030-060', 'RJ', 123456789, '1993-03-22', NULL, 'Centro', 'Rio de Janeiro'),
-('Rafael Santos', 'M', '674.087.358-52', 'Rua Ivo Stengler', 78, 'rafael@gmail.com', '85813-760', 'PR', 654321987, '1998-01-12', 'Coordenador', 'Canadá', 'Cascavel'),
-('Vanessa Pereira', 'F', '478.515.898-00', 'Rua Demóstenes', 81, 'vanea@gmail.com', '04614-013', 'SP', 321987654, '1995-09-28', 'Pedagoga', 'Campo Belo', 'São Paulo');
+	('João da Silva', 'M', '527.261.588-38', 'Rua da Juta', 63, 'joap@gmail.com', '03010-010', 'SP', '987654321', '1990-01-01', 'Comerciante', 'Brás', 'São Paulo'),
+	('Pedro Gomes', 'M', '798.177.650-32', 'Avenida Graciela Flores de Piteri', 580, 'pedro@hotmail.com', '06236-215', 'SP', '987654221', '1991-12-05', 'Diretor', 'Aliança', 'Osasco'),
+	('João da Silva', 'M', '241.964.916-85', 'Praça Bacharel Fernando Braga Pereira da Rocha', 43, 'joao@gmail.com', '04417-090', 'SP', '910654321', '1990-01-01', 'Psicólogo', 'Jardim Miriam', 'São Paulo'),
+	('Maria Souza', 'F', '686.917.583-76', 'Estrada da Lama Preta', 321, 'maria@gmail.com', '23577-900', 'RJ', '923456789', '1995-05-15', 'Diretora', 'Santa Cruz', 'Rio de Janeiro'),
+	('Carlos Oliveira', 'M', '813.749.762-53', 'Beco da Amizade', 21, 'carlos@gmail.com', '31985-332', 'MG', '987154321', '1988-12-10', 'Pedagogo', 'Dom Silvério', 'Belo Horizonte'),
+	('Ana Costa', 'F', '916.257.287-35', 'Rua Tapajós', 40, 'ana@hotmail.com', '87209-074', 'PR', '987321987', '1992-07-25', 'Psicóloga', 'Zona 03', 'Cianorte'),
+	('Paulo Santos', 'M', '676.433.639-35', 'Rua Doutor Deoclécio Pereira', 7, 'paulo@outlook.com', '91040-470', 'RS', '321987654', '1998-03-18', 'Psicólogo', 'Jardim Floresta', 'Porto Alegre'),
+	('Laura Mendes', 'F', '673.668.533-80', 'Rua Brasil Toschi', 2912, 'laura@gmail.com', '18706-490', 'SP', '987654321', '1993-09-20', 'Diretora', 'Alto da Colina II', 'Avaré'),
+	('Ricardo Lima', 'M', '287.081.411-93', 'Largo Cambuci', 742, 'ricardinho@hotmail.com', '01523-010', 'SP', '912345678', '1987-06-12', 'Pedagogo', 'Cambuci', 'São Paulo'),
+	('Fernanda Oliveira', 'F', '691.425.633-05', 'Rua Síria', 89, 'fernanda@outlook.com', '30150-020', 'MG', '987690321', '1991-04-05', 'Professora', 'Floresta', 'Belo Horizonte'),
+	('Lucas Santos', 'M', '259.719.411-60', 'Rua Rodolpho Senff Júnior', 12, 'lucas@gmail.com', '81110-130', 'PR', '965432198', '1997-02-28', 'Psicólogo', 'Capão Raso', 'Curitiba'),
+	('Juliana Silva', 'F', '386.218.721-70', 'Praça Província de São Pedro', 193, 'juliana@gmail.com', '91260-105', 'RS', '832198765', '1994-11-15', 'Psicóloga', 'Protásio Alves', 'Porto Alegre'),
+	('Carolina Fernandes', 'F', '667.762.344-00', 'Rua Felipe Camarão', 969, 'carolina@yahoo.com', '27521-330', 'RJ', '923456789', '1992-07-25', 'Psicóloga', 'Liberdade', 'Resende'),
+	('Gabriel Almeida', 'M', '835.497.616-51', 'Rua Tupaciguara', 18, 'gabriel@hotmail.com', '30330-310', 'MG', '987654021', '1996-05-03', 'Advogado', 'São Pedro', 'Belo Horizonte'),
+	('Camila Rodrigues', 'F', '862.238.218-40', 'Rua Júlio Pasa', 923, 'camila@gmail.com', '81570-510', 'PR', '765432198', '1993-03-22', NULL, 'Uberaba', 'Curitiba'),
+	('Marcelo Pereira', 'M', '164.433.466-61', 'Beco Nove', 150, 'marcelo@gmail.com', '90843-410', 'RS', '321987654', '1998-01-12', NULL, 'Nonoai', 'Porto Alegre'),
+	('Isabela Costa', 'F', '248.282.389-72', 'Rua Conde Deu', 523, 'isabela@outlook.com', '04741-901', 'SP', '987654321', '1991-09-08', 'Professora', 'Santo Amaro', 'São Paulo'),
+	('Rafaela Santos', 'F', '580.248.211-76', 'Avenida Murtas', 51, 'rafaela@gmail.com', '24913-465', 'RJ', '923456789', '1995-06-18', NULL, 'Itapeba', 'Maricá'),
+	('Gustavo Oliveira', 'M', '166.642.218-53', 'Rua Luzia Maia de Azevedo', 77, 'gustavo@gmail.com', '04877-160', 'SP', '987654321', '1990-03-30', 'Professor', 'Cidade Luz', 'São Paulo'),
+	('Carla Silva', 'F', '562.321.774-52', 'Rua Coronel João Cândido Muricy', 190, 'carla@gmail.com', '82130-040', 'PR', '765432198', '1994-02-12', 'Professora', 'Abranches', 'Curitiba'),
+	('Vitor Rodrigues', 'M', '227.759.488-12', 'Avenida Moreira Guimarães', 4, 'vitor@gmail.com', '04074-030', 'SP', '832198765', '1999-11-25', 'Professor', 'Indianópolis', 'São Paulo'),
+	('Leticia Santos', 'F', '179.889.502-15', 'Avenida José Pinheiro Borges', 2120, 'leticia@gmail.com', '08420-092', 'SP', '987610321', '1992-08-15', NULL, 'Jardim Helena', 'São Paulo'),
+	('Rodrigo Lima', 'M', '610.578.372-88', 'Rua Clarindo Bispo de Oliveira', 84, 'rodrigo@gmail.com', '30666-110', 'MG', '987254321', '1996-05-03', 'Advogado', 'Conjunto Habitacional Vale do Jatobá (Barreiro)', 'Belo Horizonte'),
+	('Mariana Fernandes', 'F', '822.116.735-54', 'Rua Anfilófio de Carvalho', 92, 'mariana@hotmail.com', '20030-060', 'RJ', '923456789', '1993-03-22', NULL, 'Centro', 'Rio de Janeiro'),
+	('Rafael Santos', 'M', '674.087.358-52', 'Rua Ivo Stengler', 78, 'rafael@gmail.com', '85813-760', 'PR', '765432198', '1998-01-12', 'Coordenador', 'Canadá', 'Cascavel'),
+	('Vanessa Pereira', 'F', '478.515.898-00', 'Rua Demóstenes', 81, 'vanea@gmail.com', '04614-013', 'SP', '832198765', '1995-09-28', 'Pedagoga', 'Campo Belo', 'São Paulo');
 --ARRUMAR TELEFONES (ENCONTRAR GERADOR DE NUM) E ACRESCENTAR MAIS DADOS (LEMBRANDO DE USAR OS GERADORES DE CPF E CEP)
 SELECT * from Aluno;
 --                                                                                                                                                                                                                  - ALUNO
@@ -166,10 +166,10 @@ VALUES ('AB', 'AB-T01', 1),
 
 SELECT * FROM turma;
 
---                                                                                                                                                                                                                   - CURSO
+--                                                                                                                                                                                                                   - TURMA
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--- OFICINA                                                             MUDAR ATRIBUTOS
+-- OFICINA                                                             
 
 DROP TABLE IF EXISTS oficina CASCADE;
 create table oficina (
@@ -195,13 +195,13 @@ select * from oficina;
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
---OFICINAS_CURSO                     														MUDAR POPULAÇÃO
+--OFICINAS_CURSO                     										
 
 DROP TABLE IF EXISTS oficinas_curso CASCADE;
 create table oficinas_curso (
 	cod_curso CHAR (5) not null,
-	id_ofic serial not null ,
 	Num_turma CHAR(7) not null,
+	id_ofic serial not null ,
 	hora_inicio time not null,
 	hora_termino time not null,
 	data_ofic date not null,
@@ -231,7 +231,7 @@ select * from oficinas_curso;
 
 
 
-
+--                                                                                                                                                                                                             OFICINAS_CURSO
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --MONITOR
@@ -332,169 +332,60 @@ VALUES
 	
 select * from atividade_feita;
 
---                                                                                                                                                                                                                   - ATIVIDADES
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--                                                                                                                                                                                                                   - ATIVIDADE_FEITA
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Tabela Frequência
 
-Drop table if exists Frequencia cascade;
-Create table Frequencia (
+Drop table if exists frequencia cascade;
+Create table frequencia (
+	Cod_curso CHAR (5) not null,
 	Id_ofic smallint not null,
+	Num_turma CHAR(7) not null,
 	Id_alu smallint not null,
 	Id_monitor smallint not null,
-	Cod_curso CHAR (5) not null,
 	Situac_presenca boolean,
 	FOREIGN KEY (Id_ofic) REFERENCES Oficina(Id_ofic) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Id_alu) REFERENCES Aluno(Id_aluno) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (Id_monitor) REFERENCES Monitor(Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (Cod_curso) REFERENCES Curso(Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE)
+	FOREIGN KEY (Cod_curso) REFERENCES Curso(Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (Num_turma) REFERENCES turma (Num_turma) ON UPDATE CASCADE ON DELETE CASCADE) 
 ;
 	
+select * from frequencia;
 
 ------------------------------	
 -- Populando tabela frequência
-Insert into Frequencia (Id_ofic, Id_alu, Id_monitor, Cod_Curso, Situac_presenca) 
-values (1, 1, 1, 'AB', 'True'), 
-(1, 2, 2, 'AB', 'True'),
-(1, 6, 1, 'AB', 'True'),
-(1, 9, 2, 'AB', 'False'),
-(1, 16, 2, 'AB', 'True'),
-(1, 18, 1, 'AB', 'True'),
-(1, 19, 2, 'AB', 'True'),
-(1, 22, 2, 'AB', 'True'), 
-(1, 24, 1, 'AB', 'False'),
-(1, 25, 1, 'AB', 'True'),
-(2, 1, 1, 'AB', 'False'), 
-(2, 2, 1, 'AB', 'False'),
-(2, 6, 1, 'AB', 'True'),
-(2, 9, 2, 'AB', 'True'),
-(2, 16, 2, 'AB', 'True'),
-(2, 18, 1, 'AB', 'True'),
-(2, 19, 2, 'AB', 'True'), 
-(2, 22, 2, 'AB', 'True'), 
-(2, 24, 1, 'AB', 'False'),
-(2, 25, 1, 'AB', 'True'),
-(3, 1, 1, 'AB', 'True'), 
-(3, 2, 1, 'AB', 'True'),
-(3, 6, 1, 'AB', 'True'),
-(3, 9, 1, 'AB', 'True'),
-(3, 16, 2, 'AB', 'True'),
-(3, 18, 1, 'AB', 'True'),
-(3, 19, 1, 'AB', 'True'),
-(3, 22, 1, 'AB', 'True'), 
-(3, 24, 1, 'AB', 'False'),
-(3, 25, 2, 'AB', 'True'),
-(4, 1, 1, 'AB', 'True'), 
-(4, 2, 1, 'AB', 'True'),
-(4, 6, 1, 'AB', 'True'),
-(4, 9, 2, 'AB', 'False'),
-(4, 16, 2, 'AB', 'False'),
-(4, 18, 2, 'AB', 'True'),
-(4, 19, 2, 'AB', 'False'), 
-(4, 22, 2, 'AB', 'True'), 
-(4, 24, 1, 'AB', 'False'),
-(4, 25, 2, 'AB', 'True'),
-(5, 1, 1, 'AB', 'True'), 
-(5, 2, 2, 'AB', 'False'),
-(5, 6, 1, 'AB', 'True'),
-(5, 9, 2, 'AB', 'False'),
-(5, 16, 2, 'AB', 'False'),
-(5, 18, 1, 'AB', 'True'),
-(5, 19, 2, 'AB', 'False'), 
-(5, 22, 1, 'AB', 'True'),
-(5, 24, 1, 'AB', 'False'),
-(5, 25, 1, 'AB', 'True'),
-(6, 1, 1, 'AB', 'True'), 
-(6, 2, 1, 'AB', 'True'),
-(6, 6, 1, 'AB', 'True'),
-(6, 9, 2, 'AB', 'True'),
-(6, 16, 2, 'AB', 'True'),
-(6, 18, 1, 'AB', 'True'),
-(6, 19, 1, 'AB', 'True'), 
-(6, 22, 1, 'AB', 'True'), 
-(6, 24, 1, 'AB', 'True'),
-(6, 25, 1, 'AB', 'True'),
-(7, 1, 1, 'AB', 'False'), 
-(7, 2, 1, 'AB', 'True'),
-(7, 6, 1, 'AB', 'False'),
-(7, 9, 2, 'AB', 'True'),
-(7, 16, 2, 'AB', 'True'),
-(7, 18, 1, 'AB', 'False'),
-(7, 19, 2, 'AB', 'True'),
-(7, 22, 1, 'AB', 'True'), 
-(7, 24, 1, 'AB', 'True'),
-(7, 25, 1, 'AB', 'False'),
-(8, 1, 1, 'AB', 'True'), 
-(8, 2, 1, 'AB', 'True'),
-(8, 6, 1, 'AB', 'True'),
-(8, 9, 2, 'AB', 'True'),
-(8, 16, 2, 'AB', 'True'),
-(8, 18, 1, 'AB', 'True'),
-(8, 19, 2, 'AB', 'True'), 
-(8, 22, 2, 'AB', 'True'), 
-(8, 24, 1, 'AB', 'False'),
-(8, 25, 1, 'AB', 'True'),
-(9, 1, 1, 'AB', 'False'), 
-(9, 2, 1, 'AB', 'True'),
-(9, 6, 1, 'AB', 'True'),
-(9, 9, 2, 'AB', 'False'),
-(9, 16, 2, 'AB', 'True'),
-(9, 18, 1, 'AB', 'True'),
-(9, 19, 2, 'AB', 'True'),
-(9, 22, 2, 'AB', 'True'),
-(9, 24, 1, 'AB', 'False'),
-(9, 25, 1, 'AB', 'True'),
-(10, 1, 1, 'AB', 'True'), 
-(10, 2, 1, 'AB', 'True'),
-(10, 6, 1, 'AB', 'True'),
-(10, 9, 2, 'AB', 'True'),
-(10, 16, 1, 'AB', 'True'),
-(10, 18, 1, 'AB', 'True'),
-(10, 19, 1, 'AB', 'True'), 
-(10, 22, 1, 'AB', 'True'), 
-(10, 24, 1, 'AB', 'True'),
-(10, 25, 2, 'AB', 'True'),
-(11, 1, 1, 'AB', 'True'), 
-(11, 2, 1, 'AB', 'True'),
-(11, 6, 1, 'AB', 'True'),
-(11, 9, 2, 'AB', 'False'),
-(11, 16, 2, 'AB', 'True'),
-(11, 18, 1, 'AB', 'False'),
-(11, 19, 2, 'AB', 'True'),
-(11, 22, 2, 'AB', 'True'), 
-(11, 24, 1, 'AB', 'True'),
-(11, 25, 1, 'AB', 'True'),
-(12, 1, 1, 'AB', 'True'), 
-(12, 2, 1, 'AB', 'True'),
-(12, 6, 1, 'AB', 'True'),
-(12, 9, 2, 'AB', 'True'),
-(12, 16, 2, 'AB', 'True'),
-(12, 18, 1, 'AB', 'True'),
-(12, 19, 2, 'AB', 'True'), 
-(12, 22, 2, 'AB', 'True'), 
-(12, 24, 1, 'AB', 'False'),
-(12, 25, 1, 'AB', 'True'),
-(13, 1, 1, 'AB', 'True'), 
-(13, 2, 1, 'AB', 'True'),
-(13, 6, 1, 'AB', 'True'),
-(13, 9, 2, 'AB', 'True'),
-(13, 16, 2, 'AB', 'False'),
-(13, 18, 1, 'AB', 'True'),
-(13, 19, 2, 'AB', 'True'), 
-(13, 22, 2, 'AB', 'False'), 
-(13, 24, 1, 'AB', 'False'),
-(13, 25, 1, 'AB', 'False'),
-(14, 1, 1, 'AB', 'True'), 
-(14, 2, 1, 'AB', 'True'),
-(14, 6, 1, 'AB', 'True'),
-(14, 9, 2, 'AB', 'True'),
-(14, 16, 1, 'AB', 'False'),
-(14, 18, 1, 'AB', 'True'),
-(14, 19, 1, 'AB', 'True'), 
-(14, 22, 1, 'AB', 'True'), 
-(14, 24, 1, 'AB', 'False'),
-(14, 25, 1, 'AB', 'False');
-
+Insert into Frequencia (Id_ofic, Id_alu, Id_monitor, Cod_Curso, Situac_presenca,Num_turma) 
+values 
+	(1, 1, 1, 'AB', 'True','AB-T01'),
+	(1, 2, 2, 'AB', 'True','AB-T01'),
+	(1, 3, 1, 'AB', 'True','AB-T01'),
+	(1, 4, 2, 'AB', 'False','AB-T01'),
+	(1, 5, 2, 'AB', 'True','AB-T01'),
+	(1, 6, 1, 'AB', 'True','AB-T01'),
+	(1, 7, 2, 'AB', 'True','AB-T01'),
+	(1, 8, 2, 'AB', 'True','AB-T01'), 
+	(1, 9, 1, 'AB', 'False','AB-T01'),
+	(1, 10, 1, 'AB', 'True','AB-T01'),
+	(1, 11, 1, 'AB', 'False','AB-T01'), 
+	(1, 12, 1, 'AB', 'False','AB-T01'),
+	(1, 13, 1, 'AB', 'True','AB-T01'),
+	
+	(2, 1, 2, 'AB', 'True','AB-T01'),
+	(2, 2, 2, 'AB', 'True','AB-T01'),
+	(2, 3, 1, 'AB', 'True','AB-T01'),
+	(2, 4, 2, 'AB', 'True','AB-T01'), 
+	(2, 5, 2, 'AB', 'True','AB-T01'), 
+	(2, 6, 1, 'AB', 'False','AB-T01'),
+	(2, 7, 1, 'AB', 'True','AB-T01'),
+	(2, 8, 1, 'AB', 'True','AB-T01'), 
+	(2, 9, 1, 'AB', 'True','AB-T01'),
+	(2, 10, 1, 'AB', 'True','AB-T01'),
+	(2, 11, 1, 'AB', 'True','AB-T01'),
+	(2, 12, 2, 'AB', 'True','AB-T01'),
+	(2, 13, 1, 'AB', 'True','AB-T01')
+;
+select * from frequencia;
 --                                                                                                                                                                                                                   - FREQUENCIA
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
