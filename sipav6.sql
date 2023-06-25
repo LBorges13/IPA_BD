@@ -54,7 +54,7 @@ VALUES
 	('Mariana Fernandes', 'F', '822.116.735-54', 'Rua Anfilófio de Carvalho', 92, 'mariana@hotmail.com', '20030-060', 'RJ', '923456789', '1993-03-22', NULL, 'Centro', 'Rio de Janeiro'),
 	('Rafael Santos', 'M', '674.087.358-52', 'Rua Ivo Stengler', 78, 'rafael@gmail.com', '85813-760', 'PR', '765432198', '1998-01-12', 'Coordenador', 'Canadá', 'Cascavel'),
 	('Vanessa Pereira', 'F', '478.515.898-00', 'Rua Demóstenes', 81, 'vanea@gmail.com', '04614-013', 'SP', '832198765', '1995-09-28', 'Pedagoga', 'Campo Belo', 'São Paulo');
-
+	
 
 --Criando tabela Curso:
 DROP TABLE IF EXISTS Curso CASCADE;
@@ -208,6 +208,8 @@ VALUES
 	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
 	('JMB', 2, 'INATIVA', '22-11-2022', 'JMB-T01'),
 	('JMB', 2, 'INATIVA', '22-11-2022', 'JMB-T01');
+	
+	select * from matricula
 
 
 --Criando tabela atividade:
@@ -334,8 +336,15 @@ VALUES
 
 /*DQL - SELECT PARA RESPOSTAS DOS REQUISITO */
 
+/* 1 - Média de notas por curso */
 
-/* 1- Consulta de frequência
+SELECT c.nome_curso AS "Nome do Curso", AVG(af.nota_atv) AS "Média de Notas"
+FROM atividade_feita af
+JOIN matricula m ON af.id_alu = m.id_alu
+JOIN turma t ON af.cod_turma = t.cod_turma
+JOIN curso c ON t.cod_curso = c.cod_curso
+GROUP BY c.nome_curso;
+/* 2 - Consulta de frequência
  Quantidade de faltas dos alunos matriculados. */
  
 SELECT DISTINCT a.nome_alu AS Nome, a.id_aluno AS Id, t.cod_turma,
@@ -351,7 +360,7 @@ LEFT JOIN frequencia f ON m.id_alu = f.id_alu
 ORDER BY a.id_aluno;
 
 
-/* 2- Consulta de notas 
+/* 3 - Consulta de notas 
  Alunos das primeiras turmas que 
  tiraram uma nota menor que 60 nas atividades. */
 
@@ -365,16 +374,44 @@ JOIN matricula m ON af.id_alu = m.id_alu
 JOIN turma t ON af.cod_turma = t.cod_turma
 JOIN curso c ON t.cod_curso = c.cod_curso
 WHERE af.cod_turma LIKE '%T01%'  
-AND af.nota_atv <= 60;
+AND af.nota_atv < 60;
 
 
-/* 3- Consulta de notas 
+/* 4 - Consulta de notas 
  Consulte se há algum aluno do estado de SP que 
- participou da oficina 3: "Gerenciando riscos no brincar". */
+ participou da oficina 2: "Brincar para construção de uma cultura de paz: habilidades". */
  
+
+SELECT DISTINCT a.id_aluno AS ID, a.nome_alu AS Nome, a.UF AS Estado, o.descricao AS Oficina, oc.data_ofic AS "Data da Oficina", fr.situac_presenca AS Presença
+FROM aluno a
+JOIN matricula m ON m.id_alu = a.id_aluno
+JOIN oficinas_curso oc ON m.cod_curso = oc.cod_curso
+JOIN oficina o ON oc.id_ofic = o.id_ofic
+JOIN frequencia fr ON o.id_ofic = fr.id_ofic
+WHERE a.UF = 'SP' AND o.id_ofic = 2 AND fr.situac_presenca = true;
+
+/* Informações de cadastro e matrícula de um aluno específico (ID=2) */
+
+SELECT  a.id_aluno AS "ID do Aluno",a.nome_alu AS "Nome do Aluno", a.cpf_alu as CPF, a.email_alu as "email do Aluno", 
+a.UF as "UF do Aluno", a.num_cel as "Celular do Aluno",
+c.nome_curso AS "Curso Matriculado", m.data_matri as "Data da matrícula", m.situ_matri as "Situação matricula",
+t.cod_turma as "Código da turma"
+FROM aluno a
+JOIN matricula m ON a.id_aluno = m.id_alu
+JOIN turma t ON m.cod_turma_mat = t.cod_turma
+JOIN curso c ON t.cod_curso = c.cod_curso
+WHERE a.id_aluno = 2;
+
+
+
 select * from oficina;
 select * from oficinas_curso; 
+select * from aluno;
+select * from atividade;
+select * from atividade_feita;
+select * from curso;
+select * from frequencia;
+select * from matricula;
+select * from monitor;
+select * from turma;
 
-
-/* 4- Resumo de Aluno tal
-... */
