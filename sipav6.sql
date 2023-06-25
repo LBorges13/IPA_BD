@@ -1,14 +1,12 @@
 /*
-Banco de Dados para o Sistema IPA (SIPA)
+Script de SQL para o Sistema IPA (SIPA)
+Criação do Banco de Dados
 Projeto Integrador 1 (PI1) - Grupo 2 
 */
 
---O QUÊ FAZER
---Arrumar dados de datas, popular mais alunos, popular mais turmas, acrescentar selects contendo joins.;;
-
 SET DATESTYLE TO POSTGRES, DMY ;
 
---Criação tabela Aluno:
+--Criando tabela Aluno:
 DROP TABLE IF EXISTS Aluno CASCADE;
 CREATE TABLE IF NOT EXISTS Aluno (
         Id_aluno SERIAL PRIMARY KEY UNIQUE NOT NULL,
@@ -20,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Aluno (
 	    Email_alu VARCHAR(50) unique not null,
 	    CEP_alu CHAR(11) not null,
 	    UF CHAR(2) not null,
-	    Num_cel BIGINT not null CHECK(char_length(cast(Num_cel as varchar)) = 9),
+	    Num_cel BIGINT not null,
 	    Data_nasc DATE not null,
 	    Profissao VARCHAR(30),
 	    Bairro VARCHAR(50),
@@ -56,11 +54,7 @@ VALUES
 	('Mariana Fernandes', 'F', '822.116.735-54', 'Rua Anfilófio de Carvalho', 92, 'mariana@hotmail.com', '20030-060', 'RJ', '923456789', '1993-03-22', NULL, 'Centro', 'Rio de Janeiro'),
 	('Rafael Santos', 'M', '674.087.358-52', 'Rua Ivo Stengler', 78, 'rafael@gmail.com', '85813-760', 'PR', '765432198', '1998-01-12', 'Coordenador', 'Canadá', 'Cascavel'),
 	('Vanessa Pereira', 'F', '478.515.898-00', 'Rua Demóstenes', 81, 'vanea@gmail.com', '04614-013', 'SP', '832198765', '1995-09-28', 'Pedagoga', 'Campo Belo', 'São Paulo');
---ARRUMAR TELEFONES (ENCONTRAR GERADOR DE NUM) E ACRESCENTAR MAIS DADOS (LEMBRANDO DE USAR OS GERADORES DE CPF E CEP)
-SELECT * from Aluno;
-Select a.Num_cel
-from Aluno a 
-where CHAR_LENGTH (CAST(a.Num_cel as varchar)) <> 9;
+
 
 --Criando tabela Curso:
 DROP TABLE IF EXISTS Curso CASCADE;
@@ -76,10 +70,9 @@ INSERT INTO Curso VALUES
 	('JMB','Jovem Mediadores do brincar', '90 horas'),
 	('GB', 'Guardiões do brincar', '50 horas'),
 	('MB','Mediadores do brincar inclusivo','30 horas');
-SELECT * FROM Curso;
+
 
 -- Criando tabela oficina                                                             
-
 DROP TABLE IF EXISTS oficina CASCADE;
 create table oficina (
 	id_ofic serial primary key not null ,
@@ -96,7 +89,7 @@ VALUES  ('Aula 1','Principios dos Agentes do Brincar: como proporcionar o brinca
 	('Aula 5','Inclusão de crianças com deficiência pelo brincar'),
 	('Aula 6','Brincar e o imaginário infantil: contação de histórias'),
 	('Aula 7','Brincar e dançar: a arte em movimento');	
-select * from oficina;
+
 
 -- Criando tabela Monitor:
 DROP TABLE IF EXISTS Monitor CASCADE;
@@ -113,11 +106,11 @@ CREATE TABLE Monitor (
 
 -- Populando tabela Monitor
 INSERT INTO Monitor (Nome_moni, CPF_moni, Data_nasc, Email_moni, CEP_moni, Nome_rua, Num_end) VALUES 
-('Anderson', '428.376.386-02', '13-11-1995', 'anderson@gmail.com', '01509-001', 'Rua safira', 104),
-('Aline', '574.265.894-09', '08-10-2000', 'aline@gmail.com', '01539221', 'Rua Barros Costa', 155);
-SELECT * from Monitor;
+ ('Anderson', '428.376.386-02', '13-11-1995', 'anderson@gmail.com', '01509-001', 'Rua safira', 104),
+ ('Aline', '574.265.894-09', '08-10-2000', 'aline@gmail.com', '01539221', 'Rua Barros Costa', 155);
 
---Criando tebela turma
+
+-- Criando tebela turma
 DROP TABLE IF EXISTS turma CASCADE;
 CREATE TABLE turma (
 	Cod_curso CHAR (5),
@@ -127,10 +120,9 @@ CREATE TABLE turma (
 	FOREIGN KEY (Id_monitor) REFERENCES Monitor (Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-SELECT * FROM turma;
 
 
--- populando turma        
+-- Populando turma        
 INSERT INTO turma (Cod_curso, Cod_turma, Id_monitor) 
 VALUES ('AB', 'AB-T01', 1),
        ('AB', 'AB-T02', 2),
@@ -141,11 +133,10 @@ VALUES ('AB', 'AB-T01', 1),
        ('MB', 'MB-T01', 1),
        ('MB', 'MB-T04', 2);					
 
-SELECT * FROM turma;
 
 -- Criando tabela Oficinas_curso:
 DROP TABLE IF EXISTS oficinas_curso CASCADE;
-create table oficinas_curso (
+CREATE TABLE oficinas_curso (
 	Cod_curso CHAR (5) not null,
 	Cod_turma CHAR(7) not null,
 	id_ofic serial not null ,
@@ -158,7 +149,7 @@ FOREIGN KEY (id_ofic) REFERENCES oficina (id_ofic) ON UPDATE CASCADE ON DELETE C
 FOREIGN KEY (Cod_turma) REFERENCES turma (Cod_turma) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
---Populando tabela oficinas_curso                  ARRUMARRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR ##############################
+--Populando tabela oficinas_curso           
 INSERT INTO oficinas_curso (cod_curso, id_ofic, Cod_turma, hora_inicio, hora_termino, data_ofic)
 VALUES  ('AB', 1,  'AB-T01', '09:00:00', '17:00:00','2023-06-01'),
 	('AB', 2,  'AB-T01', '10:00:00', '16:00:00','2023-06-02'),
@@ -187,7 +178,6 @@ FOREIGN KEY (Id_alu) REFERENCES Aluno (Id_aluno) ON UPDATE CASCADE ON DELETE CAS
 FOREIGN KEY (Cod_curso) REFERENCES Curso (Cod_curso) ON UPDATE CASCADE ON DELETE CASCADE,
 FOREIGN KEY (Id_monitor) REFERENCES Monitor (Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE);
 	
-SELECT * FROM Matricula;
 
 --Populando tabela Matricula
 INSERT INTO matricula (Cod_curso, Id_monitor, Situ_matri, Data_matri, Cod_turma_Mat)
@@ -218,11 +208,11 @@ VALUES
 	('JMB', 1, 'ATIVA', '22-11-2022', 'JMB-T01'),
 	('JMB', 2, 'INATIVA', '22-11-2022', 'JMB-T01'),
 	('JMB', 2, 'INATIVA', '22-11-2022', 'JMB-T01');
-select * from Matricula;
+
 
 --Criando tabela atividade:
-drop table if exists atividade cascade;
-create table atividade (
+DROP TABLE IF EXISTS atividade CASCADE;
+CREATE TABLE atividade (
 	Cod_curso CHAR (5) not null,
 	num_atv integer not null primary key,
 	nome_atv varchar(20) not null,	
@@ -246,11 +236,10 @@ VALUES
     ('JMB', 412, 'Atividade JMB 2'),
     ('JMB', 413, 'Atividade JMB 3');
 	
-select * from atividade;
 
 --Criando tabela atividade_feita:
-drop table if exists atividade_feita cascade;
-create table atividade_feita (
+DROP TABLE IF EXISTS atividade_feita CASCADE;
+CREATE TABLE atividade_feita (
 	Cod_curso CHAR (5) not null,
 	num_atv integer not null,
 	Id_alu serial not null,
@@ -260,11 +249,10 @@ create table atividade_feita (
 	Id_monitor smallint not null ,
 	
 	
-foreign key (Id_monitor) references Monitor(Id_monitor) on delete cascade on update cascade	,		
+FOREIGN KEY (Id_monitor) REFERENCES Monitor(Id_monitor) ON UPDATE CASCADE ON DELETE CASCADE,		
 FOREIGN KEY (Id_alu) REFERENCES Aluno (Id_aluno) ON UPDATE CASCADE ON DELETE CASCADE,
 FOREIGN KEY (Cod_turma) REFERENCES turma (Cod_turma) ON UPDATE CASCADE ON DELETE CASCADE) ;
 
-select * from atividade_feita;
 
 --Populando tabela atividade_feita
 INSERT INTO atividade_feita (Cod_curso, num_atv, Id_alu, Cod_turma, entrega, nota_atv, Id_monitor)
@@ -296,11 +284,10 @@ VALUES
     ('JMB', 411, 25, 'JMB-T01', True, 60, 2),
     ('JMB', 411, 26, 'JMB-T01', True, 89, 2);
 	
-select * from atividade_feita;
 
 --Criando tabela frequencia:
-Drop table if exists frequencia cascade;
-Create table frequencia (
+DROP TABLE IF EXISTS frequencia CASCADE;
+CREATE TABLE frequencia (
 	Cod_curso CHAR (5) not null,
 	Id_ofic smallint not null,
 	Num_turma CHAR(7) not null,
@@ -315,8 +302,8 @@ FOREIGN KEY (Cod_curso) REFERENCES Curso(Cod_curso) ON UPDATE CASCADE ON DELETE 
 FOREIGN KEY (Num_turma) REFERENCES turma (Cod_turma) ON UPDATE CASCADE ON DELETE CASCADE);
 
 -- Populando tabela frequencia
-Insert into Frequencia (Id_ofic, Id_alu, Id_monitor, Cod_Curso, Situac_presenca,Num_turma) 
-values 
+INSERT INTO Frequencia (Id_ofic, Id_alu, Id_monitor, Cod_Curso, Situac_presenca,Num_turma) 
+VALUES 
 	(1, 1, 1, 'AB', 'True','AB-T01'),
 	(1, 2, 2, 'AB', 'True','AB-T01'),
 	(1, 3, 1, 'AB', 'True','AB-T01'),
@@ -345,7 +332,49 @@ values
 	(2, 13, 1, 'AB', 'True','AB-T01');
 
 
-/*DQL - SELECT PARA RESPOSTAS DOS REQUISITOS
-Perguntas -
-...
-*/
+/*DQL - SELECT PARA RESPOSTAS DOS REQUISITO */
+
+
+/* 1- Consulta de frequência
+ Quantidade de faltas dos alunos matriculados. */
+ 
+SELECT DISTINCT a.nome_alu AS Nome, a.id_aluno AS Id, t.cod_turma,
+	(SELECT COUNT(f.id_alu)
+	FROM frequencia f
+	WHERE situac_presenca = false
+	AND f.id_alu = a.id_aluno) AS Quantidade_de_faltas
+FROM Aluno a
+JOIN matricula m ON a.id_aluno = m.id_alu
+JOIN turma t ON m.cod_turma_mat = t.cod_turma
+JOIN curso c ON t.cod_curso = c.cod_curso
+LEFT JOIN frequencia f ON m.id_alu = f.id_alu
+ORDER BY a.id_aluno;
+
+
+/* 2- Consulta de notas 
+ Alunos das primeiras turmas que 
+ tiraram uma nota menor que 60 nas atividades. */
+
+SELECT a.nome_alu as Nome, a.id_aluno AS ID,
+aa.nome_atv as Atividade, af.Cod_turma AS Turma, 
+af.nota_atv as Nota, af.entrega
+FROM atividade_feita af
+JOIN atividade aa ON af.num_atv = aa.num_atv
+JOIN aluno a ON af.id_alu = a.id_aluno
+JOIN matricula m ON af.id_alu = m.id_alu
+JOIN turma t ON af.cod_turma = t.cod_turma
+JOIN curso c ON t.cod_curso = c.cod_curso
+WHERE af.cod_turma LIKE '%T01%'  
+AND af.nota_atv <= 60;
+
+
+/* 3- Consulta de notas 
+ Consulte se há algum aluno do estado de SP que 
+ participou da oficina 3: "Gerenciando riscos no brincar". */
+ 
+select * from oficina;
+select * from oficinas_curso; 
+
+
+/* 4- Resumo de Aluno tal
+... */
